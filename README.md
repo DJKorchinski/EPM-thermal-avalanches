@@ -1,1 +1,6 @@
 # EPM-thermal-avalanches
+This repository contains the necessary code to run an elastoplastic model simulation, with a choice of several different kernels (2d Eshelby kernel, shuffled 2d Eshelby kernel, or gaussian kernel) with temperature under either fixed strain-rate or fixed stress conditions. The Eshelby kernel code depends on fenics 2019.01. The remaining scientific code has dependencies on numpy, scipy, and numba. These dependencies can be installed using the fenics05.yml conda environment. 
+
+The main code file is in "run_01_prod.py" and generates simulation data when provided with a replicate number. This replicate number also selects simulation parameters, which are configured in "sim_params_01.py". Several other simulation parameters used in the paper are supplied in "ancillary_simulation_parameter_files/" sudirectory. 
+
+This code is working scientific code and is therefore somewhat archaeological in nature. It is poorly architected and commented, but it works. Please contact the author if/when you have trouble getting it running. 
