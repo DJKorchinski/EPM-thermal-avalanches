@@ -1,0 +1,27 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: EPM-thermal-avalanches
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Daniel James
+    family-names: Korchinski
+    email: djkorchi@phas.ubc.ca
+    affiliation: University of British Columbia
+    orcid: 'https://orcid.org/0000-0002-4224-4607'
+identifiers:
+  - type: url
+    value: 'https://arxiv.org/abs/2404.08220'
+    description: Preprint associated to the software.
+repository-code: 'https://github.com/DJKorchinski/EPM-thermal-avalanches'
+abstract: >-
+  A software package for simulating the elastoplastic model
+  with nonzero temperature and driving rate, and analyzing
+  the emergent cascades that appear in steady-state.
+license: GPL-3.0
+version: '1.0'
+date-released: '2024-08-11'
