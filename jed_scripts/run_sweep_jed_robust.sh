@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 #SBATCH --nodes 1
 #SBATCH --ntasks-per-core 1
 

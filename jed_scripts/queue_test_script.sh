@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 PARTITION=standard #l40s or h100
 QOS=debug
 SIMULATION_IDENTIFIER=test_run_01
@@ -23,7 +23,7 @@ MAXMEM="8G"
 MAXCPU=4
 PCSL_DATA_DIRECTORY=/work/pcsl/korchins/projects/epm/cyclic_epm_data
 SCRIPTS_FOLDER=jed_scripts
-SUB_SCRIPT=${SCRIPTS_FOLDER}/run_sweep_jed_robust.sh #TODO: update this submission script.
+SUB_SCRIPT=${SCRIPTS_FOLDER}/run_sweep_jed.sh #TODO: update this submission script.
 # POSTPROCESS_SCRIPT=run_scripts/run_sweep_copy_data.sh
 
 DATA_DIRECTORY=cyclic_epm_data/${SIMULATION_IDENTIFIER}
