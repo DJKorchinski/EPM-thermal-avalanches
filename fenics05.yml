@@ -231,4 +231,3 @@ dependencies:
       - pyinstrument==4.0.2
       - pyqt5-sip==4.19.18
       - pyqtwebengine==5.12.1
-prefix: /home/djkorchi/.conda/envs/fenics05

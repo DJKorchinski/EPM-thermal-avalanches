@@ -194,4 +194,3 @@ dependencies:
   - emcee
   - tqdm
   - jupyter-resource-usage
-prefix: /home/djkorchi/.conda/envs/fenics05
