@@ -320,21 +320,23 @@ def calc_x_deferred(t,u_t,sigma,sigma_th,sigma_r,v,lmbda,beta,tau,s,alpha):
 
 #calculates the time to failure for a particular site, up to tmax. 
 def time_to_fail_numerical(u,tstart,tmax,sigma,sigma_th,sigma_r,p,s,alpha,debug_level=-1):
-    solver_event = lambda t,u_t,sigma,sigma_th,sigma_r,v,lmbda,beta,tau,s,alpha : u_t - u
+    solver_event = lambda t,u_t,sigma,sigma_th,sigma_r,v,lmbda,beta,tau,s,alpha : (u_t[0] - u)
     x_fail_event = calc_x_deferred
 
     solver_event.terminal = True
     x_fail_event.terminal=True
     max_step_size = (tmax-tstart)*min(5e-1,1e-1 / max(-p.v,1e-90) )
+    solver_args =(sigma,sigma_th,sigma_r,p.v,p.lmbda,p.beta,p.tau,s,alpha)
+
     integr = scipy.integrate.solve_ivp(calc_rates_du_t,(tstart,tmax),y0 = np.array([0.0]),\
                                         events=[solver_event,x_fail_event],\
-                                       args=(sigma,sigma_th,sigma_r,p.v,p.lmbda,p.beta,p.tau,s,alpha),\
+                                       args=solver_args,\
                                       max_step = max_step_size,atol=1e-14,rtol = 1e-12)
     if(debug_level > 1):
         print(integr)
     
     tfail = np.inf 
-    if(np.size(integr.t_events) > 0):
+    if(len(integr.t_events) > 0):
         if(integr.t_events[0].size > 0):
             tfail = min(integr.t_events[0][0],tfail)
         if(integr.t_events[1].size > 0):
