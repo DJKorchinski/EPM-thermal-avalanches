@@ -1,0 +1,34 @@
+name: fenics05
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Core FEniCS packages
+  - fenics
+  - mshr
+  
+  # Scientific computing
+  - python=3.8
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  
+  # Mesh tools
+  - python-gmsh
+  - meshio
+  
+  # Additional tools
+  - emcee
+  - tqdm
+  - line_profiler
+  
+  # Jupyter and related
+  - jupyter
+  - ipywidgets
+  - jupyter-resource-usage
+  
+  # Development tools
+  - numba
+  - sympy
+  - pyyaml
