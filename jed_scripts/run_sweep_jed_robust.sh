@@ -26,14 +26,14 @@ echo worker directory: $WORKER_DIRECTORY
 echo logfile: $LOGFILE
 echo Python script flags: ${PYTHON_SCRIPT_FLAGS}
 
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export OMP_NUM_THREADS=1
 
 # Multiple fallback options for MPI execution
 echo "Attempting MPI execution with various binding options..."
 
 # Option 1: No binding
-echo "Trying: mpirun --bind-to none"
-mpirun --bind-to none --oversubscribe python3 $PYTHON_MAIN \
+echo "Trying: mpirun -np $SLURM_CPUS_PER_TASK --bind-to none"
+mpirun -np $SLURM_CPUS_PER_TASK --bind-to none --oversubscribe python3 $PYTHON_MAIN \
     -data_folder ${WORKER_DIRECTORY}/ -runno $SLURM_ARRAY_TASK_ID \
     ${PYTHON_SCRIPT_FLAGS} \
     2>&1 | tee ${LOGFILE}

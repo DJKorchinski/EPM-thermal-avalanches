@@ -1,6 +1,5 @@
 #!/bin/sh -x
 #SBATCH --nodes 1
-#SBATCH --ntasks-per-core 1
 
 
 
@@ -27,14 +26,19 @@ echo logfile: $LOGFILE
 echo Python script flags: ${PYTHON_SCRIPT_FLAGS}
 
 
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export OMP_NUM_THREADS=1
+
+# Debug information
+echo "SLURM_CPUS_PER_TASK: $SLURM_CPUS_PER_TASK"
+echo "OMP_NUM_THREADS: $OMP_NUM_THREADS"
 
 # OpenMPI environment variables to handle binding issues
 export OMPI_MCA_hwloc_base_binding_policy=none
 export OMPI_MCA_btl_vader_single_copy_mechanism=none
 export OMPI_MCA_mpi_warn_on_fork=0
 
-mpirun --bind-to none --oversubscribe python3 $PYTHON_MAIN \
+echo "Running: mpirun -np $SLURM_CPUS_PER_TASK --bind-to none --oversubscribe python3..."
+mpirun -np $SLURM_CPUS_PER_TASK --bind-to none --oversubscribe python3 $PYTHON_MAIN \
     -data_folder ${WORKER_DIRECTORY}/ -runno $SLURM_ARRAY_TASK_ID \
     ${PYTHON_SCRIPT_FLAGS} \
     | tee ${LOGFILE}
