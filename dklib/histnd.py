@@ -1,8 +1,9 @@
 import numpy as np 
+from typing import List
 
 class histNd:
-    def __init__(self,binlist):
-        self.Nd = np.shape(binlist)[0]
+    def __init__(self, binlist: List[np.ndarray]):
+        self.Nd = len(binlist) #np.shape(binlist)[0] #this does not work in modern numpy.
         self.Nbins = np.array([np.size(b)-1 for b in binlist])
         self.binedges = binlist
         self.counts = np.zeros(self.Nbins,dtype=np.int64)
