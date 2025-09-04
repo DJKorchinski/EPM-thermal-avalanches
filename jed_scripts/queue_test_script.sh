@@ -58,7 +58,7 @@ MAIN_JOBID=$(sbatch --parsable \
  -o ${SLURMOUT_DIR}/slurm-%A_%a.out \
  --time=${MAXTIME} \
  --mem=${MAXMEM} \
- --cpus-per-task ${MAXCPU} \
+ --cpus-per-task=${MAXCPU} \
  -p ${PARTITION} \
  -q ${QOS} \
  --job-name=${SIMULATION_IDENTIFIER} \
